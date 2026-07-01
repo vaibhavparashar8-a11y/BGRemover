@@ -3,7 +3,7 @@ name: Build APK
 on:
   push:
     branches: [ main, master ]
-  workflow_dispatch:   # lets you trigger a build manually from the GitHub UI
+  workflow_dispatch:
 
 jobs:
   build:
@@ -29,4 +29,18 @@ jobs:
         run: |
           mkdir -p app/src/main/res/drawable app/src/main/res/mipmap-anydpi-v26
           printf '%s' '<?xml version="1.0" encoding="utf-8"?><shape xmlns:android="http://schemas.android.com/apk/res/android"><solid android:color="#6C63FF"/></shape>' > app/src/main/res/drawable/ic_launcher_background.xml
-          printf '%s' 
+          printf '%s' '<?xml version="1.0" encoding="utf-8"?><adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"><background android:drawable="@drawable/ic_launcher_background"/><foreground android:drawable="@drawable/ic_launcher_background"/></adaptive-icon>' > app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+          cp app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: BGRemover-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30
