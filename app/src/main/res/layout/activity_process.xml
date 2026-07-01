@@ -150,4 +150,4 @@
             app:cornerRadius="26dp" />
 
     </LinearLayout>
-</ScrollV
+</ScrollView>
