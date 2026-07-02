@@ -2,10 +2,39 @@
 <resources>
     <style name="Theme.BGRemover" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
         <item name="colorOnPrimary">@color/on_primary</item>
         <item name="colorSurface">@color/surface</item>
         <item name="android:windowBackground">@color/background</item>
         <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.App.Button.Outlined</item>
+        <item name="materialButtonTextStyle">@style/Widget.App.Button.Text</item>
+    </style>
+
+    <!-- Filled button: rounded 14dp, comfortable padding -->
+    <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:minHeight">52dp</item>
+    </style>
+
+    <!-- Outlined button -->
+    <style name="Widget.App.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="strokeColor">@color/divider</item>
+    </style>
+
+    <!-- Text button (for Back navigation) -->
+    <style name="Widget.App.Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textSize">15sp</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
     </style>
 </resources>
