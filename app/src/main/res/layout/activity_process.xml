@@ -12,7 +12,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Toolbar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,7 +24,7 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="← Back" />
+                android:text="Back" />
 
             <TextView
                 android:layout_width="0dp"
@@ -37,13 +36,9 @@
                 android:textColor="@color/text_primary"
                 android:gravity="center" />
 
-            <!-- spacer -->
-            <View
-                android:layout_width="64dp"
-                android:layout_height="1dp" />
+            <View android:layout_width="64dp" android:layout_height="1dp" />
         </LinearLayout>
 
-        <!-- Original Image Card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,16 +59,15 @@
             <ImageView
                 android:id="@+id/ivOriginal"
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
+                android:layout_height="200dp"
                 android:scaleType="fitCenter" />
         </LinearLayout>
 
-        <!-- Action Buttons -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnOnDevice"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:text="📱  Remove Background  (On-Device · Offline)"
+            android:text="Remove Background (On-Device)"
             android:layout_marginBottom="10dp"
             app:cornerRadius="26dp" />
 
@@ -81,12 +75,11 @@
             android:id="@+id/btnCloudApi"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:text="☁️  Remove Background  (Your rembg API · Best Quality)"
+            android:text="Remove Background (Cloud API)"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_marginBottom="20dp"
             app:cornerRadius="26dp" />
 
-        <!-- Progress Indicator -->
         <LinearLayout
             android:id="@+id/layoutProgress"
             android:layout_width="match_parent"
@@ -110,7 +103,6 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Result Card -->
         <LinearLayout
             android:id="@+id/layoutResult"
             android:layout_width="match_parent"
@@ -119,32 +111,111 @@
             android:background="@drawable/bg_card"
             android:padding="12dp"
             android:visibility="gone"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Result — Background Removed"
+                android:text="Result"
                 android:textStyle="bold"
                 android:textSize="14sp"
                 android:textColor="@color/text_secondary"
                 android:layout_marginBottom="8dp" />
 
-            <!-- Checkerboard bg shows transparency -->
             <ImageView
                 android:id="@+id/ivResult"
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
+                android:layout_height="300dp"
                 android:scaleType="fitCenter"
                 android:background="@drawable/bg_checkerboard" />
+
+            <com.hdcutter.bgremover.EraseView
+                android:id="@+id/eraseView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:visibility="gone" />
         </LinearLayout>
 
-        <!-- Save Button -->
+        <LinearLayout
+            android:id="@+id/layoutEraseControls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="12dp"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp">
+
+            <CheckBox
+                android:id="@+id/cbSmartSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Smart Select — tap to auto-remove object"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:id="@+id/layoutBrushSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Brush Size"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp" />
+
+                <SeekBar
+                    android:id="@+id/seekBrushSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="30"
+                    android:layout_marginBottom="12dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnUndo"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Undo"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDoneErasing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Done Erasing"
+                    app:cornerRadius="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnManualErase"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Manual Erase Objects"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp"
+            app:cornerRadius="26dp" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:text="💾  Save as HD PNG to Gallery"
+            android:text="Save as HD PNG to Gallery"
             android:visibility="gone"
             android:layout_marginBottom="8dp"
             app:cornerRadius="26dp" />
