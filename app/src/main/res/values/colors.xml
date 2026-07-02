@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#F0F2FF</color>
-    <color name="text_primary">#1A1A2E</color>
-    <color name="text_secondary">#6C757D</color>
-    <color name="primary">#6C63FF</color>
-    <color name="primary_variant">#5A52D9</color>
-    <color name="surface">#FFFFFF</color>
+    <!-- Brand -->
+    <color name="primary">#5048E5</color>
+    <color name="primary_dark">#4338CA</color>
+    <color name="primary_variant">#4338CA</color>
+    <color name="primary_light">#EEF2FF</color>
     <color name="on_primary">#FFFFFF</color>
+
+    <!-- Backgrounds -->
+    <color name="background">#F5F6FD</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_dim">#F0F1FA</color>
+
+    <!-- Text -->
+    <color name="text_primary">#1E1B4B</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9CA3AF</color>
+    <color name="hero_text_dim">#B8BCFF</color>
+
+    <!-- Borders / Dividers -->
+    <color name="divider">#E5E7F0</color>
+
+    <!-- Status -->
+    <color name="success">#10B981</color>
+    <color name="error">#EF4444</color>
 </resources>
